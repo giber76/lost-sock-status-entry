@@ -34,6 +34,10 @@ function assertEntryValid(line: string): void {
   if (!/\S/.test(line)) {
     throw new Error("entry is whitespace-only");
   }
+  // A status update is a complete statement: it must end with a period.
+  if (!line.endsWith(".")) {
+    throw new Error("entry must end with a period");
+  }
 }
 
 assertEntryValid(ENTRY);
